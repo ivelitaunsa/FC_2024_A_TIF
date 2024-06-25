@@ -1,6 +1,5 @@
 import pygame as py
 from constants import*
-import random
 
 class Graphic:
     def __init__(self, win):

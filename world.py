@@ -1,10 +1,8 @@
 # Esta grilla es el mundo donde las celdas existen
-import numpy as np
 from constants import*
 import particles
 import automatas
 import copy
-import random
 import math
 
 class World:

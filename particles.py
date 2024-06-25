@@ -1,8 +1,6 @@
 # this class is a kind of automata
 from automatas import*
-import copy
 from constants import*
-import math
 
 class Water(Automata):
     def __init__(self, xAddress, yAddress, mass = 0):
