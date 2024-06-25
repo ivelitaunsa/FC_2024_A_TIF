@@ -6,7 +6,7 @@ import graphic
 py.init()
 WIN = py.display.set_mode((WIDTH, HEIGHT))
 newGraphic = graphic.Graphic(WIN)
-py.display.set_caption("FLUID AUTOMATA")
+py.display.set_caption("SIMULADOR FLUIDOS")
 
 
 
