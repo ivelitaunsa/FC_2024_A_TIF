@@ -14,8 +14,8 @@ class Graphic:
     
     def _print_the_text(self):
         self._displayText("[FPS] : " + str(FPS), self.win, (WIDTH - 120, 25), 14, GREEN)
-        self._displayText("[CLICK DERECHO SUPERFICIE]", self.win, (WIDTH - 120, 40), 14, YELLOW)
-        self._displayText("[CLICK IZQUIERDO AGUA]", self.win, (WIDTH - 120, 55), 14, YELLOW)
+        self._displayText("[CLICK DERECHO AGUA]", self.win, (WIDTH - 120, 40), 14, YELLOW)
+        self._displayText("[CLICK IZQUIERDO SUPERFICIE]", self.win, (WIDTH - 120, 55), 14, YELLOW)
         self._displayText("[R PARA REINICIAR]", self.win, (WIDTH - 120, 70), 14, YELLOW)
         self._displayText("[ESC PARA SALIR]", self.win, (WIDTH - 120, 85), 14, YELLOW)
 
