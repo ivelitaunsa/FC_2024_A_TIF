@@ -4,6 +4,7 @@ import particles
 import automatas
 import copy
 import math
+import random
 
 class World:
     MINFLOW = 0.01
@@ -16,11 +17,14 @@ class World:
         self.generate_new_grid()  # Generar grilla inicial    
     
     def generate_new_grid(self):
-        ''' Generador de nuevas grillas'''
+        '''Generador de nuevas grillas con cuevas'''
         for x in range(xCells):
             self.grid.append([])
             for y in range(yCells):
-                self.grid[x].append(automatas.Automata(x, y))
+                if random.random() < 0.30:  # Probabilidad inicial de ser suelo (cueva)
+                    self.grid[x].append(particles.Ground(x, y))
+                else:
+                    self.grid[x].append(automatas.Automata(x, y))
     
     def reinit(self):
         self.__init__()

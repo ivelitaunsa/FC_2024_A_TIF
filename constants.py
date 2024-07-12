@@ -1,8 +1,8 @@
 # Constantes del programa
 HEIGHT = 900
 WIDTH = 1500
-xCells = 60
-yCells = 100
+xCells = 100
+yCells = 140
 ASIZE = HEIGHT // xCells
 SQUARE_SIZE = WIDTH // xCells
 FPS = 180
