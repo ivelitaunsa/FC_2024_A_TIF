@@ -21,7 +21,7 @@ class World:
         for x in range(xCells):
             self.grid.append([])
             for y in range(yCells):
-                if random.random() < 0.30:  # Probabilidad inicial de ser suelo (cueva)
+                if random.random() < 0.35:  # Probabilidad inicial de ser suelo (cueva)
                     self.grid[x].append(particles.Ground(x, y))
                 else:
                     self.grid[x].append(automatas.Automata(x, y))
@@ -53,28 +53,32 @@ class World:
                     aGrid[x][y].save_color()
     
     def follow_rules(self, grid, xAddress, yAddress):
-        ''' Estas reglas solo el liquido las va a seguir ya que es el elemento dinamico del sistema'''
-        self.flow = 0            
+        ''' Estas reglas solo las seguirá el líquido, ya que es el elemento dinámico del sistema. '''
+        self.flow = 0                  
+        # Verificar si hay una celda vacía abajo
         if (xAddress + 1 < xCells):
-            if (grid[xAddress + 1][yAddress].id != 3):  # if the square below the current one is empty go there                        
+            if (grid[xAddress + 1][yAddress].id != 3):  # Si la celda debajo está vacía, ir allí                        
                 self._go_down(xAddress, yAddress, grid)
+        # Si no hay flujo restante, salir de la función
         if grid[xAddress][yAddress].mass <= 0:
-            return grid  # this is to exit the function if there is no flow remaining
-        
-        if (yAddress != 0): # if we are not in the left border
-            if (grid[xAddress][yAddress - 1].id != 3):
+            return grid          
+        # Verificar si no estamos en el borde izquierdo
+        if (yAddress != 0): 
+            if (grid[xAddress][yAddress - 1].id != 3):  # Si la celda izquierda está vacía
                 self._go_left(xAddress, yAddress, grid)
+        # Si no hay flujo restante, salir de la función
         if grid[xAddress][yAddress].mass <= 0:
-            return grid  # this is to exit the function if there is no flow remaining
-        # if we are not in the right border
+            return grid          
+        # Verificar si no estamos en el borde derecho
         if (yAddress != yCells - 1):                    
-            if (grid[xAddress][yAddress + 1].id != 3):
+            if (grid[xAddress][yAddress + 1].id != 3):  # Si la celda derecha está vacía
                 self._go_right(xAddress, yAddress, grid)
+        # Si no hay flujo restante, salir de la función
         if grid[xAddress][yAddress].mass <= 0: 
-            return grid  # this is to exit the function if there is no flow remaining
-        # go up if the lower cell is too full
+            return grid          
+        # Ir hacia arriba si la celda de abajo está demasiado llena
         if (xAddress != 0):
-            if (grid[xAddress - 1][yAddress].id != 3):
+            if (grid[xAddress - 1][yAddress].id != 3):  # Si la celda arriba está vacía
                 self._go_up(xAddress, yAddress, grid)
         return grid
         
